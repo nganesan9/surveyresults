@@ -1,0 +1,90 @@
+/* style.css
+ * This file provides css styles.
+ */
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
+
+body,html {
+	width : 100%;
+	font-family: montserrat !important;
+	color: #ffffff;
+	margin-top: 85px;	
+	background-image: url("/images/green_mosaic.jpg");
+	background-repeat:no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+.menubar
+{
+    width:100%;
+    height:165px;
+    display:block;
+    position:fixed;
+    top:0;
+    left:0;
+	background-image: url("/images/green_mosaic.jpg");
+	background-repeat:no-repeat;
+	background-size: cover;
+	background-attachment: fixed;	
+}
+
+.center-logo
+{
+	background: white;
+	border-top-style: none;
+	border-top-width: 0px;	
+	border-radius: 53px;
+	margin-top: 1%;
+	margin-left: 5% !important;  
+	margin-right: 5% !important;
+	width: 90%;
+	text-align: center !important;
+}
+#bluemix_logo
+{
+	min-width:50px;
+}
+.submit, .csv
+{
+	height: 30px;
+	background: #27AE60;
+	color: white;
+	border: 0 none;
+	border-radius: 1px;
+	cursor: pointer;
+	font-family: montserrat !important;
+}
+
+.submit:hover, .submit:focus, .csv:hover, .csv:focus
+{
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+}
+
+.styled-select
+{
+	background: #27AE60;
+	color: white;
+	font-family: montserrat !important;
+	height: 30px;
+}
+
+select:active select:hover
+{
+	background-color: red;
+}
+.main_content
+{
+	position: static;
+	background-image: url("/images/green_mosaic.jpg");
+	background-repeat:no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	color: #FFFFFF !important;
+	margin-top: 85px;
+}
+#fav_runtime, #ideal_stack, #event_needs, #suggestions, #new_features, #future_projects, #email_twitter, #reasons_for_no
+{
+	margin-left: 20px;
+	font-size: 14px;
+	text-align: left;
+}

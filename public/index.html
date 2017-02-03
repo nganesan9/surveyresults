@@ -1,0 +1,294 @@
+	<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Survey Outcome</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+    <link rel="stylesheet" href="stylesheets/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>	
+	<script src="js/display_outcome.js" type="text/javascript"></script>
+	<style>
+	 @media only screen and (max-width: 500px) {
+            img.bluemix_logo_menubar { 
+                display: none; 
+            }
+			body, html
+			{
+				margin-top: 50px;
+			}
+			.menubar
+			{
+				height: 100px;
+			}
+			.main_content
+			{
+				margin-top: 50px;
+			}
+			.styled-select, .submit, .csv
+			{
+				font-size: 1.5vmin;
+			}
+			.center-logo
+			{
+				border-radius: 0px;
+			}
+     }
+	</style>
+  </head>
+
+  <body>
+    <div class="menubar">
+	 <div class="center-logo">
+	   <form action="/see_outcome" method="GET" name="outcome" id="outcome">
+		<table style="width: 100%">
+			<tr>
+				<td style="align:center;"> <img class="bluemix_logo_menubar" src="images/bluemix_logo.png" alt="Bluemix logo" width="100" height="100" style="margin-left:20px"> </td>
+				<td style="text-align:center;color: #2C3E50; font-size: 2.6vmin">EVENTS SURVEY OUTCOME</td>		
+				<td> 
+					<select class="styled-select" "name="city_name" style="font-size: 1.9vmin" id="city_name" onChange="hide_export_button()">
+							<option value="all">ALL LOCATIONS</option>
+							<option value="austin">AUSTIN</option>
+							<option value="boston">BOSTON</option>
+							<option value="chicago">CHICAGO</option>
+							<option value="dallas">DALLAS</option>
+							<option value="denver">DENVER</option>
+							<option value="losangeles">LOS ANGELES</option>
+							<option value="nyc">NEW YORK CITY</option>
+							<option value="raleigh">RALEIGH</option>
+							<option value="seattle">SEATTLE</option>
+							<option value="siliconvalley">SILICON VALLEY</option>
+							<option value="portland">PORTLAND</option>
+					</select>
+				</td>
+				<td>
+					<input class="submit" type="submit" value="See outcome" style="font-size: 1.9vmin">
+				</td>
+			<tr>
+		  </table>
+		</form>
+		<div id="export_button" style = "display:none">
+			<form action="/download_csv" method="GET" name="csv_data" id="csv_data">
+				<table style="width: 100%">
+					<tr>
+						<td align="center"> <input class="csv" type="submit" style="font-size: 1.9vmin" value="Download CSV"> </td>
+					<tr>
+				</table>
+			</form>			
+		</div>		
+	  </div>
+	</div>
+	
+	<div class="main_content">
+		
+		<div id="total_survey_candidates" style = "display:none">
+		
+		</div>
+		1. What is your favourite runtime? <br>
+		<br>
+		<div id="fav_runtime" style = "display:none">
+			<table border="1" cellspacing="7">
+				<tr>
+					<th width="60%">Runtime</th>
+					<th width="40%"> % </th>
+			    <tr>
+				<tr>
+					<td id="not_dev_runtime"> Not a developer </td>
+					<td id="not_dev_percent"> </td>
+				</tr>				
+				<tr>
+					<td id="nodejs_runtime"> NodeJS </td>
+					<td id="nodejs_percent"> </td>
+				</tr>
+				<tr>
+					<td id="ruby_runtime">Ruby </td>
+					<td id="ruby_percent"> </td>				
+				</tr>
+				<tr>
+					<td id="python_runtime"> Python </td>
+					<td id="python_percent"> </td>				
+				</tr>
+				<tr>
+					<td id="java_runtime"> Java </td>
+					<td id="java_percent"> </td>				
+				</tr>	
+				<tr>
+					<td id="php_runtime"> PHP </td>
+					<td id="php_percent"> </td>
+				</tr>
+				<tr>
+					<td id="go_runtime"> Go </td>
+					<td id="go_percent"> </td>
+				</tr>
+				<tr>
+					<td id="objc_runtime"> Objective C </td>
+					<td id="objc_percent"> </td>
+				</tr>
+				<tr>
+					<td id="swift_runtime"> Swift </td>
+					<td id="swift_percent"> </td>
+				</tr>
+				<tr>
+					<td id="cpp_runtime"> C/C++ </td>
+					<td id="cpp_percent"> </td>
+				</tr>
+				<tr>
+					<td id="html_runtime"> HTML </td>
+					<td id="html_percent"> </td>
+				</tr>
+				<tr>
+					<td id="net_runtime"> .NET </td>
+					<td id="net_percent"> </td>
+				</tr>
+				<tr>
+					<td id="perl_runtime"> Perl </td>
+					<td id="perl_percent"> </td>
+				</tr>
+				<tr>
+					<td id="other_runtime"> Other </td>
+					<td id="other_percent"> </td>				
+				</tr>				
+			</table>
+		</div>
+
+		<br>
+		2. Describe your ideal stack <br>
+		<br>
+		<div id="ideal_stack" style = "display:none">
+		<table border="1" cellspacing="7">
+				<tr>
+					<th width="60%">Stack</th>
+					<th width="40%"> % </th>
+				</tr>
+				<tr>
+					<td id="not_dev_stack"> Not a developer </td>
+					<td id="not_dev_stack_percent"> </td>				
+				</tr>
+				<tr>
+					<td id="lamp_stack"> LAMP </td>
+					<td id="lamp_stack_percent"> </td>				
+				</tr>
+				<tr>
+					<td id="mean_stack"> MEAN </td>
+					<td id="mean_stack_percent"> </td>				
+				</tr>
+				<tr>
+					<td id="open_stack"> Open Stack </td>
+					<td id="open_stack_percent"> </td>				
+				</tr>
+				<tr>
+					<td id="xampp_stack"> XAMPP </td>
+					<td id="xampp_stack_percent"> </td>				
+				</tr>
+				<tr>
+					<td id="lyme_stack"> LYME </td>
+					<td id="lyme_stack_percent"> </td>				
+				</tr>
+				<tr>
+					<td id="mamp_stack"> MAMP </td>
+					<td id="mamp_stack_percent"> </td>				
+				</tr>
+				<tr>
+					<td id="wamp_stack"> WAMP </td>
+					<td id="wamp_stack_percent"> </td>				
+				</tr>
+				<tr>
+					<td id="other_stack"> Other </td>
+					<td id="other_stack_percent"> </td>				
+				</tr>
+		</table>
+		</div>
+		
+		<br>
+		3. Do events meet your needs? <br>
+		<br>
+		<div id="event_needs" style = "display:none">
+			<table border="1" cellspacing="7">
+				<tr>
+					<th width="60%">Outcome</th>
+					<th width="40%"> % </th>
+				</tr>
+				<tr>
+					<td id="rating_yes"> Yes </td>
+					<td id="rating_yes_percent"> </td>					
+				</tr>
+				<tr>
+					<td id="rating_no"> No </td>
+					<td id="rating_no_percent"> </td>					
+				</tr>
+			</table>
+		</div>
+
+		<br>
+		4. Suggestions for the next event? <br>
+		<br>
+		<div id="suggestions">
+		</div>
+
+		<br>
+		5. What new features would you like to see in Bluemix? <br>
+		<br>
+		<div id="new_features">
+		</div>
+
+
+		<br>
+		6. Will you use Bluemix in deploying your future projects? <br>
+		<br>
+		<div id="future_projects"  style = "display:none">
+			<table border="1" cellspacing="7">
+				<tr>
+					<th width="60%">Outcome</th>
+					<th width="40%"> % </th>
+				</tr>
+				<tr>
+					<td id="future_yes"> Yes </td>
+					<td id="future_yes_percent"> </td>					
+				</tr>
+				<tr>
+					<td id="future_maybe"> Maybe </td>
+					<td id="future_maybe_percent"> </td>					
+				</tr>
+				<tr>
+					<td id="future_no"> No </td>
+					<td id="future_no_percent"> </td>					
+				</tr>
+			</table>
+		</div>
+		<br>
+		<div id="reasons_for_no">
+		
+		</div>
+		7. Email ID/ Twitter handle <br>
+		<br>
+		<div id="email_twitter">
+		
+		</div>	
+		<br>
+	</div>
+	
+	<script>
+	function hide_export_button() {
+		 document.getElementById("export_button").style.display="none";
+		 document.getElementById("export_button").style.display="none";
+		 document.getElementById("fav_runtime").style.display="none";
+		 document.getElementById("ideal_stack").style.display="none";			  
+		 document.getElementById("event_needs").style.display="none";
+		 document.getElementById("suggestions").style.display="none";
+		 document.getElementById("new_features").style.display="none";
+		 document.getElementById("future_projects").style.display="none";
+		 document.getElementById("reasons_for_no").style.display="none";
+		 document.getElementById("email_twitter").style.display="none";
+		 document.getElementById("total_survey_candidates").style.display="none";
+	}
+	</script>
+	
+	<script>
+	
+	</script>
+	</script>
+	
+  </body>
+</html>
